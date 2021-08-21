@@ -14,9 +14,7 @@ const deliveryCost = document.getElementById("deliveryCost");
 
 
 const total = document.getElementById("total");
-
 const apply = document.getElementById("apply");
-
 const updateTotal = document.getElementById("updateTotal")
 
 
@@ -26,8 +24,8 @@ const updateTotal = document.getElementById("updateTotal")
 button1.addEventListener("click", function(){
     memoryCost.innerText = "0";
     totalPrice();
-
 });
+
 button2.addEventListener("click", function(){
     memoryCost.innerText = "180";
     totalPrice();
@@ -71,41 +69,21 @@ function totalPrice(){
     updateTotal.innerText = Total;
 }
 
-
-
 // pomo code offer
-apply.addEventListener("click", function(){
-    const inputPomoCode = document.getElementById('pomoCode');
-    const newAmountTotal = inputPomoCode.value;
-    const newAmount = Number(newAmountTotal);
-    inputPomoCode.value = '';
+ document.getElementById('apply').addEventListener('click', function() {
 
+    const pomoApply = document.getElementById('apply');
+    const pomoCode = document.getElementById('pomoCode');
+    const applyPomo = pomoCode.value;
 
-    const updatePrice = updateTotal.innerText;
-    const updateAmount = Number(updatePrice);
-    const newTotal = updateAmount - newAmount;
-    updateTotal.innerText = newTotal;
-});
+    const finalTotal = document.getElementById('updateTotal');
+    const finalTotalText = finalTotal.innerText;
 
-
-
-
-
-
-
-
-// document.getElementById('deposit-button').addEventListener('click', function () {
-//     // get the amount deposited
-//     const depositInput = document.getElementById('deposit-input');
-//     const newDepositAmountText = depositInput.value;
-//     const newDepositAmount = parseFloat(newDepositAmountText);
-
-//     // update deposit total
-//     const depositTotal = document.getElementById('deposit-total');
-//     const previousDepositText = depositTotal.innerText;
-//     const previousDepositAmount = parseFloat(previousDepositText);
-//     const newDepositTotal = previousDepositAmount + newDepositAmount;
-
-//     depositTotal.innerText = newDepositTotal;
-// });
+    if (applyPomo == 'stevekaku') {
+        newTotal = finalTotalText - (finalTotalText * 20) / 100;
+        pomoApply.disabled = true;
+    }
+    finalTotal.innerText = newTotal;
+    pomoCode.value = '';
+})
 
